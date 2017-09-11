@@ -12,6 +12,8 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router';
+import firebase from 'firebase';
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -19,9 +21,25 @@ export default class App extends React.PureComponent { // eslint-disable-line re
     children: React.PropTypes.node,
   };
 
+  constructor() {
+    super();
+    const config = {
+      apiKey: 'AIzaSyDUDxTvw-3yjt5XSKIzMubfbu8AkVskZGM',
+      authDomain: 'messidge-6419a.firebaseapp.com',
+      databaseURL: 'https://messidge-6419a.firebaseio.com/',
+    };
+    firebase.initializeApp(config);
+  }
+
+
   render() {
     return (
       <div>
+        <Link to="/">
+          <h1 style={{ position: 'fixed' }}>
+            Messidge
+          </h1>
+        </Link>
         {React.Children.toArray(this.props.children)}
       </div>
     );

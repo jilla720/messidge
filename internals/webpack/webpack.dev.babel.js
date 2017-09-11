@@ -30,6 +30,7 @@ module.exports = require('./webpack.base.babel')({
   entry: [
     'eventsource-polyfill', // Necessary for hot reloading with IE
     'webpack-hot-middleware/client?reload=true',
+    'whatwg-fetch',
     path.join(process.cwd(), 'app/app.js'), // Start with js/app.js
   ],
 

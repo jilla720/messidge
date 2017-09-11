@@ -34,6 +34,26 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/messidge',
+      name: 'messidge',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/Messidge/reducer'),
+          import('containers/Messidge/sagas'),
+          import('containers/Messidge'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('messidge', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
