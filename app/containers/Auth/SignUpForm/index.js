@@ -1,21 +1,20 @@
 
 import React from 'react';
 import { Field, reduxForm } from 'redux-form/immutable';
+import { Form } from './styled';
 
 const SignUpForm = (props) => {
   const { handleSubmit } = props;
   return (
-    <form onSubmit={handleSubmit(props.onSubmit)}>
+    <Form onSubmit={handleSubmit(props.onSubmit)}>
       <div>
-        <label htmlFor="email">Email</label>
-        <Field name="email" component="input" type="text" />
+        <Field name="email" component="input" type="text" placeholder="email address" />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
-        <Field name="password" component="input" type="text" />
+        <Field name="password" component="input" type="text" placeholder="password" />
       </div>
       <button type="submit">Submit</button>
-    </form>
+    </Form>
   );
 };
 
